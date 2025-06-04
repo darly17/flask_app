@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Change Student Information</h2>
+    
+    <form method="POST" action="{{ url_for('change_student') }}">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="group">Group:</label>
+            <input type="text" id="group" name="group" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="number">Number in group (1-7):</label>
+            <input type="text" id="number" name="number" required pattern="[1-7]">
+        </div>
+        
+        <button type="submit" class="btn">Save Changes</button>
+        <a href="{{ url_for('index') }}" class="btn">Cancel</a>
+    </form>
+{% endblock %}

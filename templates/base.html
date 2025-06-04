@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Project System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Course Project System</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('change_student') }}">Change Student</a></li>
+                <li><a href="{{ url_for('choose_theme') }}">Choose Theme</a></li>
+                <li><a href="{{ url_for('work_plan') }}">Work Plan</a></li>
+                <li><a href="{{ url_for('analyze_info') }}">Analyze Info</a></li>
+                <li><a href="{{ url_for('write_text') }}">Write Text</a></li>
+                <li><a href="{{ url_for('edit_text') }}">Edit Text</a></li>
+                <li><a href="{{ url_for('consultation') }}">Consultation</a></li>
+                <li><a href="{{ url_for('pass_project') }}">Pass Project</a></li>
+                <li><a href="{{ url_for('submitted_projects') }}">Submitted Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+      
+    </footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Consultation with Professor</h2>
+    <h3>Questions and Answers</h3>
+    
+    {% if answers %}
+        <div class="qa-container">
+            {% for question, answer in answers.items() %}
+                <div class="qa-item">
+                    <p class="question"><strong>Q:</strong> {{ question }}</p>
+                    <p class="answer"><strong>A:</strong> {{ answer }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No consultation results yet.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+{% endblock %}

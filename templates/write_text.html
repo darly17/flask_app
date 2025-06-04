@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Course Project Text</h2>
+    
+    {% if text %}
+        <div class="text-container">
+            {% for paragraph in text %}
+                <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No text written yet.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+{% endblock %}

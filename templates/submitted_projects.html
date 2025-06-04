@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Submitted Course Projects</h2>
+    
+    {% if projects %}
+        <div class="projects-list">
+            {% for project in projects %}
+                <div class="project-card">
+                    <h3>{{ project.project.theme }}</h3>
+                    <p><strong>Student:</strong> {{ project.student.name }} (Group: {{ project.student.group }}, Number: {{ project.student.number }})</p>
+                    <p><strong>Submitted:</strong> {{ project.submission_date }}</p>
+                    
+                    <details>
+                        <summary>View Project Details</summary>
+                        <div class="project-details">
+                            <h4>Work Plan</h4>
+                            <ul>
+                                {% for item, text in project.project.work_plan.items() %}
+                                    <li><strong>{{ item }}:</strong> {{ text }}</li>
+                                {% endfor %}
+                            </ul>
+                            
+                            <h4>Project Text</h4>
+                            <div class="project-text">
+                                {% for paragraph in project.project.text %}
+                                    <p>{{ paragraph }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No projects have been submitted yet.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+{% endblock %}

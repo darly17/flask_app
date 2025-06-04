@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Analyzed Information for Theme: {{ theme }}</h2>
+    
+    {% if analyzed_info %}
+        <div class="info-container">
+            {% for theme, text in analyzed_info.items() %}
+                <div class="info-item">
+                    <h3>{{ theme }}</h3>
+                    <p>{{ text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No analyzed information available for this theme.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+{% endblock %}

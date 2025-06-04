@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Work Plan</h2>
+    
+    <form method="POST" action="{{ url_for('work_plan') }}">
+        <div class="form-group">
+            <label for="item_number">Item Number:</label>
+            <input type="text" id="item_number" name="item_number" required>
+        </div>
+        <div class="form-group">
+            <label for="subtask">Subtask:</label>
+            <textarea id="subtask" name="subtask" required></textarea>
+        </div>
+        <button type="submit" class="btn">Add to Work Plan</button>
+    </form>
+    
+    <h3>Current Work Plan</h3>
+    {% if work_plan %}
+        <ul class="work-plan-list">
+            {% for item, text in work_plan.items() %}
+                <li><strong>{{ item }}:</strong> {{ text }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items in work plan yet.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+{% endblock %}

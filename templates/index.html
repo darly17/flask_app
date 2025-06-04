@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Student Information</h2>
+    <div class="student-info">
+        <p><strong>Name:</strong> {{ student_name }}</p>
+        <p><strong>Age:</strong> {{ student_age }}</p>
+        <p><strong>Group:</strong> {{ student_group }}</p>
+        <p><strong>Student Number:</strong> {{ student_number }}</p>
+    </div>
+    
+    <h2>Available Actions</h2>
+    <div class="actions">
+        <a href="{{ url_for('choose_theme') }}" class="btn">Choose Theme</a>
+        <a href="{{ url_for('work_plan') }}" class="btn">Create Work Plan</a>
+        <a href="{{ url_for('analyze_info') }}" class="btn">Analyze Information</a>
+        <a href="{{ url_for('write_text') }}" class="btn">Write Text</a>
+        <a href="{{ url_for('edit_text') }}" class="btn">Edit Text</a>
+        <a href="{{ url_for('consultation') }}" class="btn">Consultation</a>
+        <a href="{{ url_for('pass_project') }}" class="btn">Pass Project</a>
+    </div>
+{% endblock %}
